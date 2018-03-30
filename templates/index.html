@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+     {% block title %}
+         <div class="topnav">
+           人生苦短，我用python!
+        </div>
+     {% endblock %}
+    {% block content-A %}
+          {% for i in article_list %}
+           <ul class="tuwen">
+              <li>
+                  <img src="/static/{{ i.image }}"/><a href="/article/{{ i.id }}?p=1"style="color: brown">{{ i.title }}</a>
+                  {{ i.description|safe }}
+              </li>
+           </ul>
+        {% endfor %}
+    {% endblock %}
+    {% block content-B %}
+         <ul>
+          <li><a href="http://www.ledu365.com/a/wenyuan/51443.html"><img src="/static/images/01.jpg"><b>狗的生存哲学</b></a>
+            <p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2017-12-15</span></p>
+          </li>
+          <li><a href="http://www.wenzhangba.com/yuanchuangwenzhang/201609/100099.html"><img src="/static/images/02.jpg"><b>我心中最美的的风景</b></a>
+            <p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2017-12-15</span></p>
+          </li>
+         </ul>
+    {% endblock %}
+    {% block content-C %}
+         <li><a href="https://www.python.org/" title="人生苦短，我用python" target="_blank">人生苦短，我用python</a></li>
+    {% endblock %}

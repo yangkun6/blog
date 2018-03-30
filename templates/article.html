@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+     {% block content %}
+       <div class="container">
+  <div class="con_content">
+    <div class="about_box">
+      <h2 class="nh1"><span>您现在的位置是：<a href="/index.html" target="_blank">网站首页</a>>><a href="#" target="_blank">写作文章</a></span><b>写作文章</b></h2>
+
+
+    <h3>文章标题:{{ article.title }}</h3>
+    <p>作者姓名:{{ article.author }}</p>
+{#    <p> {{ article.content|safe }} </p>#}
+    <p>发表日期:{{ article.time }}</p>
+    <p>文章内容:</p>
+    <p>{{ data.object_list|safe }}</p>
+        {% if data.has_previous %}
+            <a href="/article/{{ article.id}}?p={{ data.previous_page_number }}" style="color: brown">上一页</a>
+        {% else %}
+            <a href="#" style="color: brown">上一页</a>
+        {% endif %}
+        {% for i in data.paginator.pager_num_range %}
+            {% if i == data.number  %}
+                <a style="font-size: 30px" href="/article/{{ article.id}}?p={{ i }}">{{ i }}</a>
+            {% else %}
+                <a href="/article/{{ article.id}}?p={{ i }}">{{ i }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if data.has_next %}
+            <a href="/article/{{ article.id}}?p={{ data.next_page_number }}" style="color: brown">下一页</a>
+        {% else %}
+            <a href="#" style="color: brown">下一页</a>
+        {% endif %}
+        <span>
+        {{ data.number }}/{{ data.paginator.num_pages }}
+    </span>
+    <div class="blank"></div>
+  <!-- container代码 结束 -->
+    {% endblock content %}
